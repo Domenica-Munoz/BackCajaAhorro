@@ -1,4 +1,5 @@
 package ec.fin.ups.controller;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class CPersona {
 	@Autowired
 	private IPersonaService personaService;
 	
-	@PostMapping("/crearPersona")
+	@PostMapping ("/crearPersona")
 	public String save(@RequestBody Persona p) {
 		personaService.save(p);
 		return "ok";
@@ -31,6 +32,12 @@ public class CPersona {
 	public Persona listar(@PathVariable String cedula) {
 		Persona persona=personaService.findByCedula(cedula);
 		return persona;
+	}
+	
+	@GetMapping ("/listarPersonas")
+	public List<Persona> listar() {
+		List<Persona> clientes=personaService.listar();
+		return clientes;
 	}
 	
 }
