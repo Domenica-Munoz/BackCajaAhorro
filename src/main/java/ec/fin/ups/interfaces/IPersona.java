@@ -13,4 +13,5 @@ public interface IPersona extends CrudRepository<Persona, Integer>{
 	
 	@Query(value = "SELECT * FROM persona WHERE cedula = :cedula", nativeQuery = true)
     Persona findByCedula(@Param("cedula") String cedula);
+	
 }

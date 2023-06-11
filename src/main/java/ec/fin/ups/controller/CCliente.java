@@ -25,9 +25,9 @@ public class CCliente {
 		return "ok";
 	}
 	
-	@GetMapping ("/obtenerCliente/{id}")
-	public Optional<Cliente> listar(@PathVariable int id) {
-		Optional<Cliente> cliente=clienteService.listarId(id);
+	@GetMapping ("/obtenerCliente/{cedula}")
+	public Cliente listar(@PathVariable String cedula) {
+		Cliente cliente=clienteService.findByCedula(cedula);
 		return cliente;
 	}
 	

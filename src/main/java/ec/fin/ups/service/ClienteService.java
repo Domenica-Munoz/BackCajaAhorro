@@ -22,9 +22,9 @@ public class ClienteService implements IClienteService{
 	}
 
 	@Override
-	public Optional<Cliente> listarId(int id) {
+	public Cliente findByCedula(String cedula) {
 		
-		return data.findById(id);
+		return data.findByCedula(cedula);
 	}
 
 	@Override

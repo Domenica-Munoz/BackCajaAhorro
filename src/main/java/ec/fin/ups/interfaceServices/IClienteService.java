@@ -10,7 +10,7 @@ import ec.fin.ups.modelo.Cliente;
 
 public interface IClienteService {
 	public List<Cliente>listar();
-	public Optional<Cliente>listarId(int id);
+	public Cliente findByCedula(String ced);
 	public int save(Cliente p);
 	public void delete (int id);
 }
