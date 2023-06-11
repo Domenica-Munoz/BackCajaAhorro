@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ec.fin.ups.interfaceServices.IClienteService;
 import ec.fin.ups.modelo.Cliente;
+import ec.fin.ups.modelo.Persona;
 
 @RestController
 public class CCliente {
@@ -35,5 +36,11 @@ public class CCliente {
 	public List<Cliente> listar() {
 		List<Cliente> clientes=clienteService.listar();
 		return clientes;
+	}
+	
+	@PostMapping ("/editarCliente")
+	public String editar(@RequestBody Cliente cli) {
+		clienteService.save(cli);
+		return "ok";
 	}
 }
