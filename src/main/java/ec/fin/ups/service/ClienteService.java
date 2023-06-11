@@ -39,11 +39,4 @@ public class ClienteService implements IClienteService{
 		data.deleteById(id);
 		
 	}
-
-	@Override
-	public void ingresarDinero(float cantidad) {
-		Cliente cliente= new Cliente();
-		cliente.setIngresos(cliente.getIngresos()+ cantidad);
-		
-	}
 }

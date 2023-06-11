@@ -13,5 +13,4 @@ public interface IClienteService {
 	public Cliente findByCedula(String ced);
 	public int save(Cliente p);
 	public void delete (int id);
-	public void ingresarDinero(float cantidad);
 }
