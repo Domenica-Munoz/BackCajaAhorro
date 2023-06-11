@@ -3,6 +3,9 @@ package ec.fin.ups.interfaceServices;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ec.fin.ups.interfaces.IPersona;
 import ec.fin.ups.modelo.Cliente;
 
 public interface IClienteService {

@@ -27,10 +27,10 @@ public class CPersona {
 		return "ok";
 	}
 	
-	@GetMapping ("/obtenerPersona/{id}")
-	public Optional<Persona> listar(@PathVariable int id) {
-		Optional<Persona> personas=personaService.listarId(id);
-		return personas;
+	@GetMapping ("/obtenerPersona/{cedula}")
+	public Persona listar(@PathVariable String cedula) {
+		Persona persona=personaService.findByCedula(cedula);
+		return persona;
 	}
 	
 }

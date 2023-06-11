@@ -7,7 +7,7 @@ import ec.fin.ups.modelo.Persona;
 
 public interface IPersonaService {
 	public List<Persona>listar();
-	public Optional<Persona>listarId(int id);
+	public Persona findByCedula(String ced);
 	public int save(Persona p);
 	public void delete (int id);
 }
