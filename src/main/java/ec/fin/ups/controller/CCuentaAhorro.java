@@ -14,7 +14,7 @@ import ec.fin.ups.interfaces.ICuentaAhorro;
 
 @RestController
 @RequestMapping("/cuentas-ahorro")
-public class CCCuentaAhorro 
+public class CCuentaAhorro 
 {
     @Autowired
     private ICuentaAhorro cuentaAhorroRepository;
@@ -50,5 +50,13 @@ public class CCCuentaAhorro
         cuentaAhorro.setMonto(nuevoMonto);
         
         return cuentaAhorroRepository.save(cuentaAhorro);
+    }
+    
+    @GetMapping("/{id}/monto")
+    public float consultarMonto(@PathVariable int id) {
+        CuentaAhorro cuentaAhorro = cuentaAhorroRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cuenta de ahorro no encontrada con ID: " + id));
+
+        return cuentaAhorro.getMonto();
     }
 }
