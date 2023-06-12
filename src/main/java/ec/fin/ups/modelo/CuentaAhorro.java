@@ -29,14 +29,19 @@ public class CuentaAhorro {
 	@OneToMany
 	@JoinColumn(name="cuentaahorroid")
 	private List<Movimiento> movimientos;
+	
+	@OneToOne
+	@JoinColumn(name= "estadoCuenta")
+	private EstadoCuenta estadoCuenta;
 
-	public CuentaAhorro(int id, float monto, Date fechaCreacion, Cliente cliente, List<Movimiento> movimientos) {
+	public CuentaAhorro(int id, float monto, Date fechaCreacion, Cliente cliente, List<Movimiento> movimientos, EstadoCuenta estadocuenta) {
 		super();
 		this.id = id;
 		this.monto = monto;
 		this.fechaCreacion = fechaCreacion;
 		this.cliente = cliente;
 		this.movimientos = movimientos;
+		this.estadoCuenta= estadocuenta;
 	}
 	
 	public CuentaAhorro() {
@@ -82,5 +87,14 @@ public class CuentaAhorro {
 	public void setMovimientos(List<Movimiento> movimientos) {
 		this.movimientos = movimientos;
 	}
+
+	public EstadoCuenta getEstadoCuenta() {
+		return estadoCuenta;
+	}
+
+	public void setEstadoCuenta(EstadoCuenta estadoCuenta) {
+		this.estadoCuenta = estadoCuenta;
+	}
+	
 	
 }

@@ -6,22 +6,25 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+
 @Entity
-@Table (name ="estadosolicitud")
-public class EstadoSolicitud {
+@Table (name ="estadocuenta")
+public class EstadoCuenta {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String descripcion;
 	
 	
-	public EstadoSolicitud(int id, String descripcion) {
+	public EstadoCuenta() {
+		
+	}
+	
+	public EstadoCuenta(int id, String descripcion) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
-	}
-	public EstadoSolicitud() {
-		
 	}
 	public int getId() {
 		return id;
@@ -35,7 +38,4 @@ public class EstadoSolicitud {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
-	
 }
