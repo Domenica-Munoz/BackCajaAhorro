@@ -4,6 +4,8 @@ package ec.fin.ups.service;
 
 import java.util.List;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,9 @@ public class PersonaService implements IPersonaService {
 	@Override
 	public int save(Persona p) {
 		int res=0;
+		Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+		String hash = argon2.hash(1, 1024, 1, p.getPassword().toCharArray());
+		p.setPassword(hash);
 		Persona persona=data.save(p);
 		if(!persona.equals(null)) {}
 		return 1;
@@ -40,5 +45,10 @@ public class PersonaService implements IPersonaService {
 	public void delete(int id) {
 		data.deleteById(id);
 		
+	}
+
+	@Override
+	public Persona getUserByEmailPassword(String email, String password) {
+		return null;
 	}
 }

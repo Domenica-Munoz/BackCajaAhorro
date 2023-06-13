@@ -10,4 +10,5 @@ public interface IPersonaService {
 	public Persona findByCedula(String ced);
 	public int save(Persona p);
 	public void delete (int id);
+	Persona getUserByEmailPassword(String email, String password);
 }
