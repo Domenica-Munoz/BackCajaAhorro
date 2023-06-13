@@ -1,4 +1,4 @@
-package ec.fin.ups.interfaces;
+package ec.fin.ups.repositories;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
