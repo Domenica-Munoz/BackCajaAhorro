@@ -1,4 +1,4 @@
-package ec.fin.ups.interfaces;
+package ec.fin.ups.repositories;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -6,7 +6,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import ec.fin.ups.modelo.Cliente;
-import ec.fin.ups.modelo.Persona;
 
 @Repository
 public interface ICliente extends CrudRepository<Cliente, Integer>{

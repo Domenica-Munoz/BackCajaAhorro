@@ -15,11 +15,12 @@ public class Persona {
 	private int id;
 	private String nombre;
 	private String correo;
+	private String password;
 	private String cedula;
 	private String direccion;
 	private String telefono;
 	
-	public Persona(int id,String nombre, String correo, String cedula, String direccion, String telefono) {
+	public Persona(int id,String nombre, String correo, String cedula, String password, String direccion, String telefono) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -27,6 +28,7 @@ public class Persona {
 		this.cedula = cedula;
 		this.direccion = direccion;
 		this.telefono = telefono;
+		this.password = password;
 	}
 	
 	public Persona() {
@@ -65,6 +67,14 @@ public class Persona {
 
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getDireccion() {
