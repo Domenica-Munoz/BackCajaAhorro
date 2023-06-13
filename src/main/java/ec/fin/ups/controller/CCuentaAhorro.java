@@ -19,7 +19,7 @@ import ec.fin.ups.service.CuentaAhorroService;
 public class CCuentaAhorro {
 
 @Autowired
-private ICuentaAhorro cuentaa;
+private ICuentaAhorroService cuentaa;
 
 
 @PostMapping("/crearCuenta")
@@ -34,11 +34,11 @@ public String save(@RequestBody CuentaAhorro cuent) {
 	//return cuenta;
 //}
 
-//@GetMapping ("/listarCuenta")
-//public List<CuentaAhorro> listar() {
-	//List<CuentaAhorro> cuenta=cuentaa.list;
-	//return cuenta;
-//}
+@GetMapping ("/listarCuenta")
+public List<CuentaAhorro> listar() {
+	List<CuentaAhorro> cuentas=cuentaa.listar();
+	return cuentas;
+}
 
 //@PostMapping ("/editarCuenta")
 //public String editar(@RequestBody CuentaAhorro cuent) {

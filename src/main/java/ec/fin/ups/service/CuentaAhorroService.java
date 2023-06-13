@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ec.fin.ups.interfaceServices.ICuentaAhorroService;
 import ec.fin.ups.interfaces.ICuentaAhorro;
 import ec.fin.ups.modelo.CuentaAhorro;
 import ec.fin.ups.modelo.Persona;
 
-
+@Service
 public class CuentaAhorroService implements ICuentaAhorroService{
 	
 	@Autowired
@@ -19,7 +20,7 @@ public class CuentaAhorroService implements ICuentaAhorroService{
 	@Override
 	public List<CuentaAhorro> listar(){
 		// TODO Auto-generated method stub
-		return (List<CuentaAhorro>)data.findByAhorro("monto");
+		return (List<CuentaAhorro>)data.findAll();
 	}
 
 	

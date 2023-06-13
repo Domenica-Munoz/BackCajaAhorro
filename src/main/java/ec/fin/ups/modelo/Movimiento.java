@@ -28,6 +28,10 @@ public class Movimiento {
 	@JoinColumn(name="cuentaahorroid")
 	private CuentaAhorro cuentaAhorro;
 	
+	@ManyToOne
+	@JoinColumn (name="BancoIdMovimiento")
+	private Banco banco;
+	
 	public Movimiento(int id, Date fecha, float monto, Tmovimiento tmovimiento) {
 		super();
 		this.id = id;
@@ -70,6 +74,22 @@ public class Movimiento {
 
 	public void setTmovimiento(Tmovimiento tmovimiento) {
 		this.tmovimiento = tmovimiento;
+	}
+
+	public CuentaAhorro getCuentaAhorro() {
+		return cuentaAhorro;
+	}
+
+	public void setCuentaAhorro(CuentaAhorro cuentaAhorro) {
+		this.cuentaAhorro = cuentaAhorro;
+	}
+
+	public Banco getBanco() {
+		return banco;
+	}
+
+	public void setBanco(Banco banco) {
+		this.banco = banco;
 	}
 	
 	
