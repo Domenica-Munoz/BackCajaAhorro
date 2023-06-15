@@ -19,6 +19,7 @@ public class CuentaAhorro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
 	private float monto;
 	private Date fechaCreacion;
 	
