@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ec.fin.ups.modelo.CuentaAhorro;
-import ec.fin.ups.interfaces.ICuentaAhorro;
+import ec.fin.ups.interfaces.ICuentaAhorro2;
 
 @RestController
 @RequestMapping("/cuentas-ahorro")
 public class CCCuentaAhorro 
 {
     @Autowired
-    private ICuentaAhorro cuentaAhorroRepository;
+    private ICuentaAhorro2 cuentaAhorroRepository;
 
     @GetMapping
     public List<CuentaAhorro> getCuentasAhorro() {
