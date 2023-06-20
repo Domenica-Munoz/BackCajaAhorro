@@ -62,7 +62,7 @@ public class PersonaTest {
 	}
 	
 	@Test
-	public void listarclientes() {
+	public void listarpersonas() {
 		
 		java.util.List<Persona> listapesona= Arrays.asList(new Persona( 1,"Carlos","carlos.34@yahoo.es","123","0106785423","Batan","9873652416"),
 														new Persona( 2,"Cristina","cristina.98@yahoo.es","321","0108985423","San Pedro","9873689416")

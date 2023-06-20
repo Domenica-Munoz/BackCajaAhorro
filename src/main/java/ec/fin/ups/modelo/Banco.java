@@ -40,7 +40,9 @@ public class Banco {
 		this.movimientos = movimientos;
 	}
 
-
+	public Banco() {
+		
+	}
 
 	public int getId() {
 		return id;
