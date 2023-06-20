@@ -74,6 +74,8 @@ public class PersonaTest {
 		
 		assertEquals(listapesona, listarpersona1);
 	}
+	
+	
 		
 	}
 
