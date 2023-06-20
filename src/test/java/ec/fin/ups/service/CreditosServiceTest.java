@@ -3,6 +3,8 @@ package ec.fin.ups.service;
 import ec.fin.ups.interfaceServices.ICreditosService;
 import ec.fin.ups.modelo.Creditos;
 
+import ec.fin.ups.modelo.SolicitudCredito;
+import ec.fin.ups.modelo.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,8 +35,8 @@ class CreditosServiceTest {
 	public void testListar() {
 		// Simular datos de prueba
 		List<Creditos> listaCreditos = List.of(
-				new Creditos(1, null, null, 'a', 0),
-				new Creditos(2, null, null, 'b', 0)
+				new Creditos(1, new SolicitudCredito(), new Usuario(), 'a', 0),
+				new Creditos(2, new SolicitudCredito(), new Usuario(), 'b', 0)
 		);
 
 		// Configurar el comportamiento del mock
@@ -50,16 +52,20 @@ class CreditosServiceTest {
 	@Test
 	public void testFindById() {
 		int id = 1;
-		Creditos credito = new Creditos(id, null, null, 'a', 0);
+		Creditos credito = new Creditos(id, new SolicitudCredito(), new Usuario(), 'a', 0);
 
 		// Configurar el comportamiento del mock
 		when(creditosServiceRepository.findById(id)).thenReturn(credito);
 
-		// Ejecutar el método a probar
 		Creditos resultado = creditosService.findById(id);
 
+		assertNotNull(resultado);
+
+		// Ejecutar el método a probar
+		assertEquals(id, resultado.getId());
+
 		// Verificar el resultado
-		assertEquals(credito, resultado);
+		verify(creditosServiceRepository, times(1)).findById(id);
 	}
 
 	@Test
