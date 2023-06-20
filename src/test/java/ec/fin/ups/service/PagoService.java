@@ -12,7 +12,6 @@ public class PagoService  implements IPagoService{
 	
 	@Autowired
 	private IPago data;
-	
 
 	public PagoService(IPago dataRepo) {
 		this.data=dataRepo;
