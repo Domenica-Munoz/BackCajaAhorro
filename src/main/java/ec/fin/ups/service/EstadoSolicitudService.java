@@ -16,7 +16,6 @@ public class EstadoSolicitudService implements IEstadoSolicitudService{
 	
 	public EstadoSolicitudService(IEstadoSolicitud repo) {
 		this.data=repo;
-		
 	}
 	
 

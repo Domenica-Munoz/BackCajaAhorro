@@ -1,8 +1,10 @@
 package ec.fin.ups.service;
 
 import ec.fin.ups.interfaceServices.ICreditosService;
+import ec.fin.ups.interfaces.ICreditos;
 import ec.fin.ups.modelo.Creditos;
 
+import ec.fin.ups.modelo.EstadoSolicitud;
 import ec.fin.ups.modelo.SolicitudCredito;
 import ec.fin.ups.modelo.Usuario;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,13 +17,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 class CreditosServiceTest {
 
 	@Mock
-	private ICreditosService creditosServiceRepository;
+	private ICreditos data;
 
 	@InjectMocks
 	private CreditosService creditosService;
@@ -33,80 +37,73 @@ class CreditosServiceTest {
 
 	@Test
 	public void testListar() {
-		// Simular datos de prueba
-		List<Creditos> listaCreditos = List.of(
-				new Creditos(1, new SolicitudCredito(), new Usuario(), 'a', 0),
-				new Creditos(2, new SolicitudCredito(), new Usuario(), 'b', 0)
-		);
-
 		// Configurar el comportamiento del mock
-		when(creditosServiceRepository.listar()).thenReturn(listaCreditos);
+		List<Creditos> creditosList = new ArrayList<>();
+		creditosList.add(new Creditos(1, new SolicitudCredito(), new Usuario(), 'a', 10));
+		creditosList.add(new Creditos(2, new SolicitudCredito(), new Usuario(), 'a', 10));
 
-		// Ejecutar el método a probar
-		List<Creditos> resultado = creditosService.listar();
+		when(data.findAll()).thenReturn(creditosList);
+
+		// Llamar al método a probar
+		List<Creditos> result = creditosService.listar();
 
 		// Verificar el resultado
-		assertEquals(listaCreditos, resultado);
+		assertNotNull(result);
+		assertEquals(creditosList.size(), result.size());
 	}
 
 	@Test
-	public void testFindById() {
+	public void findById() {
+		// Configurar el comportamiento del mock
 		int id = 1;
-		Creditos credito = new Creditos(id, new SolicitudCredito(), new Usuario(), 'a', 0);
+		Creditos creditos = new Creditos(id, new SolicitudCredito(), new Usuario(), 'a', 10);
+		when(data.findById(id)).thenReturn(Optional.of(creditos));
 
-		// Configurar el comportamiento del mock
-		when(creditosServiceRepository.findById(id)).thenReturn(credito);
-
-		Creditos resultado = creditosService.findById(id);
-
-		assertNotNull(resultado);
-
-		// Ejecutar el método a probar
-		assertEquals(id, resultado.getId());
+		// Llamar al método a probar
+		Creditos result = creditosService.findById(id);
 
 		// Verificar el resultado
-		verify(creditosServiceRepository, times(1)).findById(id);
+		assertNotNull(result);
+		assertEquals(id, result.getId());
 	}
 
 	@Test
-	public void testSave() {
-		Creditos credito = new Creditos(1, null, null, 'a', 0);
-
+	public void save() {
 		// Configurar el comportamiento del mock
-		when(creditosServiceRepository.save(credito)).thenReturn(true);
+		Creditos creditos = new Creditos(1, new SolicitudCredito(), new Usuario(), 'a', 10);
+		when(data.save(creditos)).thenReturn(creditos);
+		when(data.save(creditos)).thenReturn(creditos);
 
-		// Ejecutar el método a probar
-		Boolean resultado = creditosService.save(credito);
+		// Llamar al método a probar
+		boolean result = creditosService.save(creditos);
 
 		// Verificar el resultado
-		assertTrue(resultado);
-		verify(creditosServiceRepository, times(1)).save(credito);
-		// Aquí puedes agregar más verificaciones según sea necesario
+		assertTrue(result);
 	}
 
 	@Test
 	public void testDelete() {
+		// Datos de prueba
 		int id = 1;
+		Creditos creditos = new Creditos(id, new SolicitudCredito(), new Usuario(), 'a', 10);
 
 		// Configurar el comportamiento del mock
-		Creditos credito = new Creditos();
-		credito.setId(id);
-		when(creditosServiceRepository.findById(id)).thenReturn(credito);
+		when(data.findById(id)).thenReturn(Optional.of(creditos));
 
 		// Ejecutar el método a probar
-		Boolean resultado = creditosService.delete(id);
+		boolean resultado = creditosService.delete(id);
 
 		// Verificar el resultado
 		assertTrue(resultado);
-		verify(creditosServiceRepository, times(1)).delete(id);
+		verify(data, times(1)).deleteById(id);
 		// Aquí puedes agregar más verificaciones según sea necesario
 	}
-	
-	
-	
+
+
+
 	public String aprobarCredito(Creditos c) {
 		// TODO Auto-generated method stub
 		return null;
-		
+
 	}
 }
