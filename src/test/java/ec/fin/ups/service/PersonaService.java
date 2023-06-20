@@ -1,17 +1,15 @@
 package ec.fin.ups.service;
 
 
-
-import java.util.List;
-
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
+import ec.fin.ups.interfaceServices.IPersonaService;
+import ec.fin.ups.modelo.Persona;
+import ec.fin.ups.repositories.IPersona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ec.fin.ups.interfaceServices.IPersonaService;
-import ec.fin.ups.repositories.IPersona;
-import ec.fin.ups.modelo.Persona;
+import java.util.List;
 
 @Service
 public class PersonaService implements IPersonaService {

@@ -1,13 +1,12 @@
 package ec.fin.ups.service;
 
-import java.util.List;
-
+import ec.fin.ups.interfaceServices.IClienteService;
+import ec.fin.ups.modelo.Cliente;
+import ec.fin.ups.repositories.ICliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ec.fin.ups.interfaceServices.IClienteService;
-import ec.fin.ups.repositories.ICliente;
-import ec.fin.ups.modelo.Cliente;
+import java.util.List;
 
 @Service
 public class ClienteService implements IClienteService{
