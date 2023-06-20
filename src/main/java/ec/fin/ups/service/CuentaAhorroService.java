@@ -34,7 +34,6 @@ public class CuentaAhorroService implements ICuentaAhorroService{
 	@Override
 	public void delete(int id) {
 		data.deleteById(id);
-		
 	}
 
 

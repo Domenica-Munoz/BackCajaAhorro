@@ -11,6 +11,7 @@ import ec.fin.ups.modelo.Creditos;
 
 @Service
 public class CreditosService implements ICreditosService {
+
 	@Autowired
 	private ICreditos data;
 	
