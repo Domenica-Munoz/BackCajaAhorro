@@ -2,6 +2,8 @@ package ec.fin.ups.service;
 
 import ec.fin.ups.interfaces.IGarantia;
 import ec.fin.ups.modelo.Garantia;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.stereotype.Service;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@ExtendWith(MockitoExtension.class)
 class GarantiaServiceTest {
 
 	@Mock
