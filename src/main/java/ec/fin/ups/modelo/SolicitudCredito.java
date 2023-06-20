@@ -90,6 +90,7 @@ public class SolicitudCredito {
 		return garantias;
 	}
 
+	
 	public void setGarantias(List<Garantia> garantias) {
 		this.garantias = garantias;
 	}
