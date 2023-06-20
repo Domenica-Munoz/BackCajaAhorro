@@ -25,8 +25,14 @@ public class EstadoCuentaService implements IEstadoCuentaService {
     }
 
     @Override
-    public void guardarEstadoCuenta(EstadoCuenta estadoCuenta) {
-        repository.save(estadoCuenta);
+    public Boolean guardarEstadoCuenta(EstadoCuenta estadoCuenta) {
+        EstadoCuenta estado = repository.save(estadoCuenta);
+        if (estado != null) {
+            System.out.println("EstadoCuenta Guardado");
+            return true;
+        }
+        System.out.println("No se pudo guardar el EstadoCuenta");
+        return false;
     }
 
     @Override

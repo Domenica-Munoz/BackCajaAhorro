@@ -1,6 +1,6 @@
 package ec.fin.ups.service;
 
-import ec.fin.ups.interfaceServices.IEstadoSolicitudService;
+import ec.fin.ups.interfaces.IEstadoSolicitud;
 import ec.fin.ups.modelo.EstadoSolicitud;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -13,14 +13,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 class EstadoSolicitudServiceTest {
 
 	@Mock
-	private IEstadoSolicitudService estadoSolicitudRepository;
+	private IEstadoSolicitud data;
 
 	@InjectMocks
 	private EstadoSolicitudService estadoSolicitudService;
@@ -28,56 +29,49 @@ class EstadoSolicitudServiceTest {
 	@BeforeEach
 	void setUp() {MockitoAnnotations.initMocks(this);}
 
-	public void testListar() {
-		// Datos de prueba
-		EstadoSolicitud estado1 = new EstadoSolicitud();
-		EstadoSolicitud estado2 = new EstadoSolicitud();
-		List<EstadoSolicitud> estados = Arrays.asList(estado1, estado2);
-
+	@Test
+	public void listar() {
 		// Configurar el comportamiento del mock
-		when(estadoSolicitudRepository.listar()).thenReturn(estados);
+		List<EstadoSolicitud> estadoSolicitudList = new ArrayList<>();
+		estadoSolicitudList.add(new EstadoSolicitud(1, "Pendiente"));
+		estadoSolicitudList.add(new EstadoSolicitud(2, "Aprobado"));
 
-		// Ejecutar el método a probar
-		List<EstadoSolicitud> resultado = estadoSolicitudService.listar();
+		when(data.findAll()).thenReturn(estadoSolicitudList);
+
+		// Llamar al método a probar
+		List<EstadoSolicitud> result = estadoSolicitudService.listar();
 
 		// Verificar el resultado
-		assertEquals(estados, resultado);
-		verify(estadoSolicitudRepository, times(1)).listar();
+		assertNotNull(result);
+		assertEquals(estadoSolicitudList.size(), result.size());
 	}
 
 	@Test
-	public void testFindById() {
-		// Datos de prueba
+	public void findById() {
+		// Configurar el comportamiento del mock
 		int id = 1;
-		EstadoSolicitud estado = new EstadoSolicitud();
+		EstadoSolicitud estadoSolicitud = new EstadoSolicitud(id, "Pendiente");
+		when(data.findById(id)).thenReturn(Optional.of(estadoSolicitud));
 
-		// Configurar el comportamiento del mock
-		when(estadoSolicitudRepository.findById(id)).thenReturn(estado);
-
-		// Ejecutar el método a probar
-		EstadoSolicitud resultado = estadoSolicitudService.findById(id);
+		// Llamar al método a probar
+		EstadoSolicitud result = estadoSolicitudService.findById(id);
 
 		// Verificar el resultado
-		assertEquals(estado, resultado);
-		verify(estadoSolicitudRepository, times(1)).findById(id);
-		// Aquí puedes agregar más verificaciones según sea necesario
+		assertNotNull(result);
+		assertEquals(id, result.getId());
 	}
 
 	@Test
-	public void testSave() {
-		// Datos de prueba
-		EstadoSolicitud estado = new EstadoSolicitud();
-
+	public void save() {
 		// Configurar el comportamiento del mock
-		when(estadoSolicitudRepository.save(estado)).thenReturn(true);
+		EstadoSolicitud estadoSolicitud = new EstadoSolicitud(1, "Pendiente");
+		when(data.save(estadoSolicitud)).thenReturn(estadoSolicitud);
 
-		// Ejecutar el método a probar
-		boolean resultado = estadoSolicitudService.save(estado);
+		// Llamar al método a probar
+		boolean result = estadoSolicitudService.save(estadoSolicitud);
 
 		// Verificar el resultado
-		assertTrue(resultado);
-		verify(estadoSolicitudRepository, times(1)).save(estado);
-		// Aquí puedes agregar más verificaciones según sea necesario
+		assertTrue(result);
 	}
 
 	@Test
@@ -88,14 +82,14 @@ class EstadoSolicitudServiceTest {
 		estado.setId(id);
 
 		// Configurar el comportamiento del mock
-		when(estadoSolicitudRepository.findById(id)).thenReturn(estado);
+		when(data.findById(id)).thenReturn(Optional.of(estado));
 
 		// Ejecutar el método a probar
 		boolean resultado = estadoSolicitudService.delete(id);
 
 		// Verificar el resultado
 		assertTrue(resultado);
-		verify(estadoSolicitudRepository, times(1)).delete(id);
+		verify(data, times(1)).deleteById(id);
 		// Aquí puedes agregar más verificaciones según sea necesario
 	}
 
