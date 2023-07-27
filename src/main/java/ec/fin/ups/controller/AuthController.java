@@ -3,7 +3,6 @@ package ec.fin.ups.controller;
 import ec.fin.ups.Utils.JWTUtil;
 import ec.fin.ups.interfaceServices.IPersonaService;
 import ec.fin.ups.modelo.Persona;
-import ec.fin.ups.repositories.IPersona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

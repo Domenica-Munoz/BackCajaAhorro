@@ -75,20 +75,5 @@ public class Creditos {
 	public void setMontoAdeudato(float montoAdeudato) {
 		this.montoAdeudato = montoAdeudato;
 	}
-	
-	
-	public void aprobarCredito() {
-		String estadoS = this.solicitudCredito.getEstadoSolicitud().getDescripcion();
-		
-		
-		
-		if(estadoS.equals("pendiente")) {
-			
-			
-			
-		}
-		
-		
-	}
 
 }

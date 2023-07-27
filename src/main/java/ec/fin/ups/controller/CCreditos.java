@@ -37,7 +37,7 @@ public class CCreditos {
 			description = "Este servicio permite actualizar la información del credito existente identificado por su ID.\n" +
 					"        Los parámetros de la solicitud deben incluir los datos actualizados del credito."
 	)
-	@PostMapping("/editarCredito")
+	@PostMapping("/creditos")
 	public String editar(@RequestBody Creditos c) {
 		creditosService.save(c);
 		return "ok";
@@ -63,6 +63,37 @@ public class CCreditos {
 	public List<Creditos> listar() {
 		List<Creditos> creditos = creditosService.listar(); 
 		return creditos;
+	}
+
+	@PostMapping("/aprobarCredito")
+	public String aprobarCredito(@RequestBody Creditos c) {
+		if(c.getEstado() == 'A'){
+			return "El crédito ya ha sido aprobado";
+		}
+		c.setEstado('A');
+		creditosService.save(c);
+		return "ok";
+	}
+
+	@PostMapping("/rechazarCredito")
+	public String rechazarCredito(@RequestBody Creditos c) {
+		if(c.getEstado() == 'R'){
+			return "El crédito ya ha sido rechazado";
+		}
+		c.setEstado('R');
+		creditosService.save(c);
+		return "ok";
+	}
+
+	@GetMapping("/consultarEstado")
+	public String consultarEstado(@RequestBody Creditos c) {
+		if(c.getEstado() == 'A'){
+			return "El crédito ha sido aprobado";
+		}
+		if(c.getEstado() == 'R'){
+			return "El crédito ha sido rechazado";
+		}
+		return "El crédito está en proceso";
 	}
 
 }

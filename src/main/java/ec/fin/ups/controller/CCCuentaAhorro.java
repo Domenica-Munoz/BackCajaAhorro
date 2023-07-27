@@ -16,7 +16,7 @@ public class CCCuentaAhorro
     @Autowired
     private ICuentaAhorro2 cuentaAhorroRepository;
 
-    @GetMapping
+    @GetMapping("/")
     public List<CuentaAhorro> getCuentasAhorro() {
         return cuentaAhorroRepository.findAll();
     }

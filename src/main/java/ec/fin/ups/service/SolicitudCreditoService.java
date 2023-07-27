@@ -17,8 +17,6 @@ public class SolicitudCreditoService implements ISolicitudCreditoService {
 	public SolicitudCreditoService (ISolicitudCredito repo) {
 		this.data=repo;
 	}
-	
-	
 
 	@Override
 	public List<SolicitudCredito> listar() {

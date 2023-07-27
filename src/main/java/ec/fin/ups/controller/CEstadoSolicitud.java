@@ -42,9 +42,9 @@ public class CEstadoSolicitud {
 		return estadoService.findById(id);
 		
 	}
-	
+
+	@GetMapping("/listarEstadoSolicitud")
 	public List<EstadoSolicitud> listar (){
-		
 		return estadoService.listar();
 	}
 	

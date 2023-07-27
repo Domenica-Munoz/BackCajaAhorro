@@ -30,9 +30,7 @@ public class TprestamoService implements ITPrestamoService{
 		// TODO Auto-generated method stub
 		Tprestamo Tp= data.save(es);
 		if(Tp!=null) {
-			
 			return true;
-			
 		}else {
 			return false;
 			
@@ -45,11 +43,8 @@ public class TprestamoService implements ITPrestamoService{
 		// TODO Auto-generated method stub
 		Tprestamo Tp= this.findById(id);
 		if(Tp!=null) {
-			
 			data.deleteById(id);
-			
 			return true;
-			
 		}else {
 			return false;
 			

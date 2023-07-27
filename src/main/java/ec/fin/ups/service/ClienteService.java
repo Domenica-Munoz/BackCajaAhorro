@@ -22,7 +22,6 @@ public class ClienteService implements IClienteService{
 
 	@Override
 	public Cliente findByCedula(String cedula) {
-		
 		return data.findByCedula(cedula);
 	}
 

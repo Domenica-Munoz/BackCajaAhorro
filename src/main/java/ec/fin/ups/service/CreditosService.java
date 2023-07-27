@@ -15,14 +15,12 @@ public class CreditosService implements ICreditosService {
 	@Autowired
 	private ICreditos data;
 	
-	
 	public CreditosService(ICreditos creditosRepository) {
 		this.data = creditosRepository;
 	}
 
 	@Override
 	public List<Creditos> listar() {
-
 		return this.data.findAll();
 	}
 
@@ -55,14 +53,5 @@ public class CreditosService implements ICreditosService {
 	        System.out.println("No se encontró ningún crédito con el ID proporcionado");
 	        return false;
 	}
-	
-	
-	
-	public String aprobarCredito(Creditos c) {
 
-		
-		
-		return null;
-		
-	}
 }

@@ -50,11 +50,9 @@ public class PersonaService implements IPersonaService {
 	@Override
 	public Persona getUserByEmailPassword(String email, String password) {
 		Persona p = data.findByCorreo(email);
-
 		if (p == null){
 			return null;
 		}
-
 		Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
 		if (argon2.verify(p.getPassword(), password.toCharArray())){
 			return p;

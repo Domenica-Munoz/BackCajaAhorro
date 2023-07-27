@@ -22,8 +22,6 @@ public class CuentaAhorroService implements ICuentaAhorroService{
 		return (List<CuentaAhorro>)data.findAll();
 	}
 
-	
-
 	@Override
 	public int save(CuentaAhorro cuent) {
 		int res=0;
@@ -36,15 +34,11 @@ public class CuentaAhorroService implements ICuentaAhorroService{
 		data.deleteById(id);
 	}
 
-
-
 	@Override
 	public Optional<CuentaAhorro> listarId(int id) {
 		// TODO Auto-generated method stub
 		return Optional.empty();
 	}
-
-
 
 	@Override
 	public CuentaAhorro finCuentaAhorro(String monto) {

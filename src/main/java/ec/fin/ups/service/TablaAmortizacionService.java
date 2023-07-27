@@ -23,7 +23,6 @@ public class TablaAmortizacionService implements ITablaAmortizacionService{
 
 	@Override
 	public List<TablaAmortizacion> listar() {
-	
 		return this.data.findAll();
 	}
 
